@@ -1,0 +1,68 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background glow -->
+  <circle cx="64" cy="64" r="60" fill="url(#paint0_radial)" />
+  
+  <!-- Main circle -->
+  <circle cx="64" cy="64" r="54" fill="url(#paint1_linear)" stroke="url(#paint2_linear)" stroke-width="2" />
+  
+  <!-- Neural network pattern -->
+  <g opacity="0.7">
+    <circle cx="64" cy="64" r="30" stroke="rgba(255, 255, 255, 0.5)" stroke-width="0.5" />
+    <circle cx="64" cy="64" r="40" stroke="rgba(255, 255, 255, 0.3)" stroke-width="0.5" />
+    
+    <!-- Neural nodes -->
+    <circle cx="64" cy="34" r="3" fill="#FFFFFF" />
+    <circle cx="64" cy="94" r="3" fill="#FFFFFF" />
+    <circle cx="34" cy="64" r="3" fill="#FFFFFF" />
+    <circle cx="94" cy="64" r="3" fill="#FFFFFF" />
+    <circle cx="44" cy="44" r="3" fill="#FFFFFF" />
+    <circle cx="84" cy="84" r="3" fill="#FFFFFF" />
+    <circle cx="44" cy="84" r="3" fill="#FFFFFF" />
+    <circle cx="84" cy="44" r="3" fill="#FFFFFF" />
+    
+    <!-- Neural connections -->
+    <line x1="64" y1="34" x2="44" y2="44" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="64" y1="34" x2="84" y2="44" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="34" y1="64" x2="44" y2="44" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="34" y1="64" x2="44" y2="84" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="94" y1="64" x2="84" y2="44" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="94" y1="64" x2="84" y2="84" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="64" y1="94" x2="44" y2="84" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    <line x1="64" y1="94" x2="84" y2="84" stroke="rgba(255, 255, 255, 0.6)" stroke-width="0.5" />
+    
+    <!-- Cross connections -->
+    <line x1="44" y1="44" x2="84" y2="44" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.5" />
+    <line x1="44" y1="84" x2="84" y2="84" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.5" />
+    <line x1="34" y1="64" x2="94" y2="64" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.5" />
+    <line x1="64" y1="34" x2="64" y2="94" stroke="rgba(255, 255, 255, 0.4)" stroke-width="0.5" />
+    <line x1="44" y1="44" x2="84" y2="84" stroke="rgba(255, 255, 255, 0.3)" stroke-width="0.5" />
+    <line x1="44" y1="84" x2="84" y2="44" stroke="rgba(255, 255, 255, 0.3)" stroke-width="0.5" />
+  </g>
+  
+  <!-- Central brain icon -->
+  <path d="M64 45C53.5066 45 45 53.5066 45 64C45 74.4934 53.5066 83 64 83C74.4934 83 83 74.4934 83 64C83 53.5066 74.4934 45 64 45ZM64 79C55.7157 79 49 72.2843 49 64C49 55.7157 55.7157 49 64 49C72.2843 49 79 55.7157 79 64C79 72.2843 72.2843 79 64 79Z" fill="white"/>
+  <path d="M64 53C58.4772 53 54 57.4772 54 63C54 68.5228 58.4772 73 64 73C69.5228 73 74 68.5228 74 63C74 57.4772 69.5228 53 64 53ZM64 69C60.6863 69 58 66.3137 58 63C58 59.6863 60.6863 57 64 57C67.3137 57 70 59.6863 70 63C70 66.3137 67.3137 69 64 69Z" fill="white"/>
+  <circle cx="64" cy="63" r="4" fill="white"/>
+  
+  <!-- Pulsing effect circles -->
+  <circle cx="64" cy="64" r="20" stroke="rgba(255, 255, 255, 0.8)" stroke-width="0.5">
+    <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Gradients -->
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(64 64) rotate(90) scale(60)">
+      <stop stop-color="#A855F7" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#A855F7" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="paint1_linear" x1="20" y1="20" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4B0082" />
+      <stop offset="1" stop-color="#800080" />
+    </linearGradient>
+    <linearGradient id="paint2_linear" x1="10" y1="10" x2="118" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D946EF" />
+      <stop offset="1" stop-color="#8B5CF6" />
+    </linearGradient>
+  </defs>
+</svg>

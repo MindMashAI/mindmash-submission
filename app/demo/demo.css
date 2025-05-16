@@ -1,0 +1,751 @@
+html,
+body {
+  height: auto !important;
+  min-height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+}
+
+body {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+/* Ensure the main content area is scrollable */
+main,
+[role="main"],
+.page-scroll,
+#__next,
+[data-nextjs-scroll-focus-boundary] {
+  height: auto !important;
+  min-height: 100%;
+  overflow-y: auto !important;
+}
+
+/* Add more space at the bottom to ensure there's room to scroll */
+.container {
+  padding-bottom: 2rem;
+}
+
+.bg-scanline {
+  background-image: repeating-linear-gradient(
+    transparent 0px,
+    transparent 1px,
+    rgba(0, 0, 0, 0.2) 1px,
+    rgba(0, 0, 0, 0.2) 2px
+  );
+}
+
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+}
+
+/* Update the scrollbar styles with neon colors */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8));
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 1), rgba(0, 255, 255, 1));
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+}
+
+/* Add a glow effect to the scrollbar */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to bottom, rgba(255, 0, 255, 1), rgba(0, 255, 255, 1));
+  box-shadow: 0 0 16px rgba(0, 255, 255, 1);
+}
+
+/* Ensure the page is scrollable */
+/*html,
+body {
+  height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}*/
+
+/* Add a smooth scroll behavior for the whole page */
+/*.page-scroll {
+  scroll-behavior: smooth;
+  overflow-y: auto !important;
+  height: 100vh;
+}
+*/
+
+/* Custom scrollbar for specific elements */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8));
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 1), rgba(0, 255, 255, 1));
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 211, 238, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-shadow {
+  animation: pulse 2s infinite;
+}
+
+/* Add a subtle glow effect for active elements */
+.glow-effect {
+  animation: glow-pulse 3s infinite;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+/* Add styles to prevent unwanted page scrolling */
+.chat-interface {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  /* Prevent scroll propagation to parent */
+  overscroll-behavior: contain;
+}
+
+/* Ensure notifications appear in the right place */
+.notification-container {
+  position: fixed;
+  top: 60px; /* Below the header */
+  right: 1rem;
+  z-index: 50;
+  width: 20rem;
+  pointer-events: auto;
+}
+
+/* Add styles for the header notifications */
+.header-notification {
+  animation: slideInLeft 0.3s ease-out forwards;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Ensure notifications in header have proper styling */
+.notification-badge {
+  position: relative;
+}
+
+.notification-badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #22d3ee;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Add these styles for better card and panel designs */
+.cyberpunk-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.cyberpunk-card:hover {
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+}
+
+/* Improve chat container styling */
+.chat-messages-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.5) rgba(0, 0, 0, 0.5);
+  scroll-behavior: smooth;
+  padding-right: 8px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+
+/* Ensure the Mash.BoT minter area scrolls properly */
+.modes-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modes-panel > div:first-child {
+  flex-shrink: 0;
+}
+
+.modes-panel .custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.5) rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+/* Improve scrollbar visibility */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.5);
+  border-radius: 3px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.7);
+}
+
+/* Fix for modes panel and mashbot minter scrolling */
+.modes-panel {
+  overflow: hidden !important;
+}
+
+.modes-panel > div {
+  height: 100%;
+  overflow: hidden;
+}
+
+.modes-panel .custom-scrollbar {
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.5) rgba(0, 0, 0, 0.5);
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+/* Ensure scrollable areas have proper height */
+.h-full {
+  height: 100%;
+}
+
+/* Improve scrollbar visibility */
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.5) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Fix scrolling issues in the modes panel and mashbot minter */
+.modes-panel {
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.modes-panel > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Force scrollbars to be visible and properly styled */
+.custom-scrollbar {
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.5) rgba(0, 0, 0, 0.5) !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px !important;
+  display: block !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.5) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+/* Ensure proper height calculations */
+.h-full {
+  height: 100% !important;
+}
+
+.flex-1 {
+  flex: 1 1 0% !important;
+}
+
+/* Add fade effect at top and bottom of scrollable areas */
+.custom-scrollbar {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+/* Restore neon scrollbar styling with stronger specificity */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  display: block !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 4px !important;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5) !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8)) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5) !important;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+div::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 1), rgba(0, 255, 255, 1)) !important;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.8) !important;
+}
+
+/* Specific styles for the modes panel and mashbot minter */
+.modes-panel > div > div::-webkit-scrollbar {
+  width: 8px !important;
+  display: block !important;
+}
+
+.modes-panel > div > div::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 4px !important;
+}
+
+.modes-panel > div > div::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8)) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+}
+
+/* Force scrollbars to be visible in Firefox */
+.modes-panel > div > div {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(138, 43, 226, 0.8) rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* Force scrollbars to be visible everywhere */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+  display: block !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8)) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* Target the specific containers */
+.modes-panel > div,
+[style*="overflow: auto"],
+[style*="overflow-y: auto"] {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(138, 43, 226, 0.8) rgba(0, 0, 0, 0.5) !important;
+  overflow-y: auto !important;
+}
+
+/* Ensure the content is tall enough to scroll */
+.modes-panel > div > div:last-child {
+  padding-bottom: 100px !important;
+}
+
+/* Add this to hide scrollbars but keep scrolling functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Add these specific styles for the scrollable containers */
+.mashbot-scroll-container::-webkit-scrollbar,
+.modes-scroll-container::-webkit-scrollbar {
+  width: 10px !important;
+  display: block !important;
+}
+
+.mashbot-scroll-container::-webkit-scrollbar-track,
+.modes-scroll-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 4px !important;
+  margin: 4px;
+}
+
+.mashbot-scroll-container::-webkit-scrollbar-thumb,
+.modes-scroll-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8)) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5) !important;
+}
+
+.mashbot-scroll-container::-webkit-scrollbar-thumb:hover,
+.modes-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 1), rgba(0, 255, 255, 1)) !important;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.8) !important;
+}
+
+/* Firefox scrollbar styles */
+.mashbot-scroll-container,
+.modes-scroll-container {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(138, 43, 226, 0.8) rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Fix for overlapping issues */
+.mashbot-scroll-container > div,
+.modes-scroll-container > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure the scroll buttons don't overlap with content */
+.mashbot-scroll-container,
+.modes-scroll-container {
+  padding-top: 40px !important; /* Make room for the buttons */
+}
+
+/* Basic styling for the page */
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Standard scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8));
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 1), rgba(0, 255, 255, 1));
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 43, 226, 0.8) rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 211, 238, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-shadow {
+  animation: pulse 2s infinite;
+}
+
+/* Card styling */
+.cyberpunk-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.cyberpunk-card:hover {
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+}
+
+/* Essential scrolling styles */
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Basic container styling */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure scrollable containers work properly */
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
+/* Ensure proper height for scrollable containers */
+.h-full {
+  height: 100% !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 0.8), rgba(0, 255, 255, 0.8));
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(138, 43, 226, 1), rgba(0, 255, 255, 1));
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 43, 226, 0.8) rgba(0, 0, 0, 0.3);
+}
+
+/* Fix for specific containers */
+.flex-1 {
+  flex: 1 1 0%;
+  min-height: 0; /* Critical for Firefox */
+}
+
+/* Ensure content doesn't overflow */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Add these styles to ensure proper mobile scrolling */
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure proper touch scrolling on iOS */
+.custom-scrollbar {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent horizontal overflow */
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* Ensure proper scrolling on mobile */
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Animation for fade in */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Ensure proper touch behavior */
+button,
+a {
+  touch-action: manipulation;
+}
+
+/* Improve tap target sizes on mobile */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .button-icon-only {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}

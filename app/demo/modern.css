@@ -1,0 +1,93 @@
+/* Modern UI styles for MindMash.AI */
+
+/* Base styles */
+.modern-dashboard {
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Grid background pattern */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(75, 85, 99, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(75, 85, 99, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glass morphism effects */
+.modern-header,
+.modern-left-sidebar,
+.modern-right-sidebar {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 0 rgba(34, 211, 238, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px 2px rgba(34, 211, 238, 0.6);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Scrollbar styling */
+.modern-dashboard ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.modern-dashboard ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.modern-dashboard ::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3);
+  border-radius: 3px;
+}
+
+.modern-dashboard ::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}
+
+/* Transitions */
+.modern-left-sidebar,
+.modern-right-sidebar {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .modern-content {
+    flex-direction: column;
+  }
+
+  .modern-left-sidebar,
+  .modern-right-sidebar {
+    width: 100% !important;
+    height: auto;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(31, 41, 55, 0.5);
+  }
+}
+
+/* Focus styles for accessibility */
+.modern-dashboard button:focus-visible,
+.modern-dashboard a:focus-visible {
+  outline: 2px solid rgba(34, 211, 238, 0.6);
+  outline-offset: 2px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(to right, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFT Image Test</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      width: 100%;
+    }
+    .nft-container {
+      width: 300px;
+      height: 300px;
+      border: 2px solid #8b5cf6;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto 20px;
+      background-color: #000;
+    }
+    .nft-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .nft-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 8px;
+      text-align: center;
+    }
+    .nft-label span {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .button {
+      background-color: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    .log {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid #333;
+      padding: 10px;
+      margin-top: 20px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>NFT Image Test</h1>
+    
+    <div class="nft-container">
+      <img id="nft-image" class="nft-image" alt="SoulSig NFT" 
+           src="https://jade-late-crow-559.mypinata.cloud/ipfs/bafybeieqhgskslrn4ojuyzzt54yx44ov6qezc7k2mh6bpos7g4x3ygwhly"
+           onerror="handleImageError()">
+      <div class="nft-label">
+        <span>SoulSig #5289</span>
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="button" onclick="tryImage(0)">Try Image 1</button>
+      <button class="button" onclick="tryImage(1)">Try Image 2</button>
+      <button class="button" onclick="tryImage(2)">Try Image 3</button>
+    </div>
+    
+    <div class="log" id="log">
+      Image loading...
+    </div>
+  </div>
+
+  <script>
+    const imageSources = [
+      "https://jade-late-crow-559.mypinata.cloud/ipfs/bafybeieqhgskslrn4ojuyzzt54yx44ov6qezc7k2mh6bpos7g4x3ygwhly",
+      "/placeholder.svg?height=300&width=300&query=NFT%20Image",
+      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSIjZmZmIj5Tb3VsU2lnIE5GVDwvdGV4dD48L3N2Zz4="
+    ];
+    
+    function log(message) {
+      const logElement = document.getElementById('log');
+      logElement.innerHTML += `<div>${new Date().toISOString().substr(11, 8)} - ${message}</div>`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    function handleImageError() {
+      log("Image failed to load. Trying fallback...");
+      tryImage(1);
+    }
+    
+    function tryImage(index) {
+      const img = document.getElementById('nft-image');
+      img.src = imageSources[index];
+      log(`Trying image source ${index + 1}: ${imageSources[index].substring(0, 30)}...`);
+    }
+    
+    // Log when image loads successfully
+    document.getElementById('nft-image').onload = function() {
+      log("Image loaded successfully!");
+    };
+    
+    // Initial log
+    log("Page loaded. Testing NFT image...");
+  </script>
+</body>
+</html>

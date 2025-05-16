@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test New Onboarding - Static HTML</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background-color: #111;
+      border: 3px solid #ff00ff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+    
+    h1 {
+      font-size: 32px;
+      color: #ff00ff;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .debug-box {
+      padding: 20px;
+      background-color: #222;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      border: 1px solid #ff00ff;
+    }
+    
+    .nft-container {
+      width: 250px;
+      height: 250px;
+      margin: 0 auto 24px auto;
+      position: relative;
+      background-color: black;
+      border: 3px solid #ff00ff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .nft-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      text-align: center;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background-color: #8b5cf6;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <!-- Distinct visual header to make it clear this is the static HTML file -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; background-color: #ff0000; padding: 10px; text-align: center; z-index: 100;">
+    <h2 style="margin: 0; color: white;">STATIC HTML TEST PAGE</h2>
+  </div>
+  
+  <div class="container">
+    <h1>Static HTML Test Page</h1>
+    
+    <div class="debug-box">
+      <h2 style="color: #ff00ff; font-size: 20px; margin-bottom: 16px;">Debug Information</h2>
+      
+      <div id="debug-info" style="font-family: monospace; background-color: #000; padding: 12px; border-radius: 6px; margin-bottom: 16px;">
+        Loading...
+      </div>
+      
+      <p style="background-color: #333; padding: 10px; border-radius: 6px; font-size: 14px; text-align: center; font-weight: bold; color: #ff00ff;">
+        If you can see this page, static HTML files are accessible
+      </p>
+    </div>
+    
+    <div class="nft-container">
+      <!-- NFT Image, trying multiple sources -->
+      <img 
+        id="nft-image" 
+        src="https://jade-late-crow-559.mypinata.cloud/ipfs/bafybeieqhgskslrn4ojuyzzt54yx44ov6qezc7k2mh6bpos7g4x3ygwhly" 
+        alt="SoulSig NFT"
+        style="width: 100%; height: 100%; object-fit: contain;"
+        onerror="this.onerror=null; handleImageError();"
+      />
+      
+      <div class="nft-label">
+        SoulSig #5289
+      </div>
+    </div>
+    
+    <div id="image-status" class="debug-box" style="text-align: center;">
+      Checking image load status...
+    </div>
+    
+    <button class="btn" onclick="testDifferentSource()">
+      Try Different Image Source
+    </button>
+    
+    <a href="/new-onboard/test" class="btn" style="background-color: #3b82f6; text-decoration: none;">
+      Go to React Test Page
+    </a>
+  </div>
+  
+  <script>
+    // Set up debug info on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const debugInfo = document.getElementById('debug-info');
+      const renderTime = new Date().toISOString();
+      const screenInfo = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        userAgent: navigator.userAgent
+      };
+      
+      debugInfo.innerHTML = `
+        <p style="margin-bottom: 8px;">Load time: ${renderTime}</p>
+        <p style="margin-bottom: 8px;">Screen width: ${screenInfo.width}px</p>
+        <p style="margin-bottom: 8px;">Screen height: ${screenInfo.height}px</p>
+        <p style="word-break: break-all;">User agent: ${screenInfo.userAgent}</p>
+      `;
+    });
+    
+    // Image error handler
+    function handleImageError() {
+      console.log("Image failed to load, using fallback");
+      document.getElementById('nft-image').src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSIjZmYwMGZmIj5Tb3VsU2lnIE5GVDwvdGV4dD48L3N2Zz4=";
+      document.getElementById('image-status').innerHTML = "Primary image failed to load. Using fallback.";
+      document.getElementById('image-status').style.borderColor = "#ef4444";
+    }
+    
+    // Image load success handler
+    document.getElementById('nft-image').onload = function() {
+      console.log("Image loaded successfully");
+      document.getElementById('image-status').innerHTML = "Image loaded successfully!";
+      document.getElementById('image-status').style.borderColor = "#10b981";
+    };
+    
+    // Test different image sources
+    let currentSourceIndex = 0;
+    const imageSources = [
+      "https://jade-late-crow-559.mypinata.cloud/ipfs/bafybeieqhgskslrn4ojuyzzt54yx44ov6qezc7k2mh6bpos7g4x3ygwhly",
+      "https://jade-late-crow-559.mypinata.cloud/ipfs/bafybeieqhgskslrn4ojuyzzt54yx44ov6qezc7k2mh6bpos7g4x3ygwhly",
+      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIiBmaWxsPSIjZmYwMGZmIj5Tb3VsU2lnIE5GVDwvdGV4dD48L3N2Zz4="
+    ];
+    
+    function testDifferentSource() {
+      currentSourceIndex = (currentSourceIndex + 1) % imageSources.length;
+      const newSrc = imageSources[currentSourceIndex];
+      document.getElementById('nft-image').src = newSrc;
+      document.getElementById('image-status').innerHTML = `Trying source #${currentSourceIndex + 1}...`;
+      document.getElementById('image-status').style.borderColor = "#ff00ff";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .glow-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
+  }
+
+  .glow-text-purple {
+    text-shadow: 0 0 10px rgba(153, 0, 255, 0.7), 0 0 20px rgba(153, 0, 255, 0.5), 0 0 30px rgba(153, 0, 255, 0.3);
+  }
+
+  .gradient-border-cyan {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    border-radius: 0.5rem;
+  }
+
+  .gradient-border-cyan::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: linear-gradient(to right, #00ffff, #9900ff);
+    opacity: 0.3;
+  }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
